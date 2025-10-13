@@ -30,7 +30,9 @@
     "test": "echo 'no public tests'",
     "prebuild": "rimraf dist",
     "commit": "git-cz",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -69,7 +71,7 @@
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "husky": "^1.0.1",
-    "lint-staged": "^8.0.0",
+    "lint-staged": "^9.0.0",
     "lodash.camelcase": "^4.3.0",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
@@ -81,12 +83,14 @@
     "handlebars": "^4.7.7",
     "handlebars-helpers": "^0.10.0",
     "lodash.random": "^3.2.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "@snyk/protect": "latest"
   },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "snyk": true
 }
